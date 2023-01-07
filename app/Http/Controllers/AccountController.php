@@ -3,19 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Account;
 
 class AccountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function reset()
     {
-        //
+        return response('OK', 200);
     }
-    
     /**
      * Store a newly created resource in storage.
      *
@@ -24,7 +20,6 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
