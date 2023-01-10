@@ -15,6 +15,20 @@ class AccountController extends Controller
         return response('OK', 200);
     }
 
+    public function show(Request $request)
+    {
+        $account_id = intval($request->input('account_id'));
+        $account_exists = DB::table('accounts')->where('id', $account_id)->exists();
+
+        if (!$account_exists) { 
+            return response(0, 404);
+        }
+
+        $account = Account::find($account_id);
+
+        return response($account->balance, 200);
+    }
+
     public function store(Request $request)
     {
         $amount = $request->input('amount');
@@ -101,19 +115,5 @@ class AccountController extends Controller
         
         }
         return response('OK', 200);
-    }
-
-    public function show(Request $request)
-    {
-        $account_id = intval($request->input('account_id'));
-        $account_exists = DB::table('accounts')->where('id', $account_id)->exists();
-
-        if (!$account_exists) { 
-            return response(0, 404);
-        }
-
-        $account = Account::find($account_id);
-
-        return response($account->balance, 200);
     }
 }
