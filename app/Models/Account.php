@@ -13,12 +13,4 @@ class Account extends Model
         'id',
         'balance'
     ];
-
-    public function deposit($amount){
-        $this->$balance += $amount;
-    }
-
-    public function withdraw($amount){
-        $this->$balance -= $amount;
-    }
 }
